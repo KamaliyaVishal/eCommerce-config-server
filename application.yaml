@@ -1,21 +1,27 @@
 # This is a global configuration file that applies to all Config-Server configurations.
 
-#Eureka Config for all services
+# Eureka Config for all services
 eureka:
   client:
-    service-url.defaultZone: http://localhost:8761/eureka
+    service-url:
+      defaultZone: http://localhost:8761/eureka
   instance:
     prefer-ip-address: true
 
-#Zipkin config
+# Management, Actuator, and Micrometer Tracing Config
 management:
+  # 1. Enable 100% trace sampling
   tracing:
     sampling:
       probability: 1.0
-  #Actuator config
+
+  # 2. Point Micrometer to your Zipkin Server instance
+  zipkin:
+    tracing:
+      endpoint: "http://localhost:9411/api/v2/spans"
+
+  # 3. Actuator endpoint exposure
   endpoints:
     web:
       exposure:
         include: "*"
-
-  spring.zipkin.baseUrl: <http://localhost:9411>
