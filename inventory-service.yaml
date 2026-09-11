@@ -1,0 +1,25 @@
+spring:
+  # PostgresSQL Database Connection Settings
+  datasource:
+    url: jdbc:postgresql://localhost:5432/inventoryDB
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+
+  # JPA / Hibernate Configurations
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8082
+  servlet:
+    context-path: /product
+
+#Eureka Config
+eureka.client:
+  service-url.defaultZone: http://localhost:8761/eureka
