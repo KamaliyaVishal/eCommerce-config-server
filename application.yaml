@@ -18,7 +18,7 @@ management:
   # 2. Point Micrometer to your Zipkin Server instance
   zipkin:
     tracing:
-      endpoint: "http://localhost:9411/api/v2/spans"
+      endpoint: http://127.0.0.1:9411/zipkin/
 
   # 3. Actuator endpoint exposure
   endpoints:
