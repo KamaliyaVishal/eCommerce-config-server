@@ -10,22 +10,16 @@ eureka:
 
 # Management, Actuator, and Micrometer Tracing Config
 management:
-  # 1. Enable 100% trace sampling
-  tracing:
-    sampling:
-      probability: 1.0
-
-  # 2. Point Micrometer to your Zipkin Server instance
-  zipkin:
-    tracing:
-      endpoint: http://127.0.0.1:9411/zipkin/
-
-  # 3. Actuator endpoint exposure
   endpoints:
     web:
       exposure:
         include: "*"
 
-logging:
-  pattern:
-    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+management.tracing.sampling.probability: 1.0
+spring.zipkin.baseUrl: http://localhost:9411
+
+
+
+#logging:
+#  pattern:
+#    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
